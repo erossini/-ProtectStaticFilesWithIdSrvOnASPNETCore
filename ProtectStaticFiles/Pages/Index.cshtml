@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            max-width: 42em;
+            margin: 0 auto;
+            font-family: sans-serif;
+            font-size: 16px;
+            padding: 10px 40px;
+        }
+
+        img {
+            width: 24px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Patient Journey</h1>
+
+    <form method="post">
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <p>Status: 👌 Signed in -  User name: @this.User.Identity.Name</p>
+            <p><input type="submit" name="command" value="Sign out" /></p>
+
+            <p>Available content: </p>
+            <ul>
+                <li><a href="protectedfiles/topsecret.txt" target="_blank">Go to the file</a></li>
+            </ul> 
+         }
+         else
+         {
+            <p>Status: 🔒 Signed out</p>
+            <p><input type="submit" name="command" value="Sign in" /></p>
+         }
+    </form>
+
+    <hr />
+</body>
+</html>
